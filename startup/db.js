@@ -11,5 +11,5 @@ module.exports = function () {
 		autoIndex: false
 	};
 	mongoose.connect(db, options)
-		.then(() => console.log(`MongoDB connected at adress ${db}`));
+		.then(() => console.log(`MongoDB connected`));
 };
