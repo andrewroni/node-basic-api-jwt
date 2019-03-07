@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const config = require('config');
+const { accessibleRecordsPlugin, permittedFieldsPlugin } = require('@casl/mongoose');
+
 
 module.exports = function () {
 	if (process.env.MONGOOSE_DEBUG === 'true') {
@@ -10,6 +12,10 @@ module.exports = function () {
 		useNewUrlParser: true,
 		autoIndex: false
 	};
+
+	mongoose.plugin(accessibleRecordsPlugin);
+	// mongoose.plugin(permittedFieldsPlugin);
+	mongoose.Promise = global.Promise;
 	mongoose.connect(db, options)
 		.then(() => console.log(`MongoDB connected`));
 };
