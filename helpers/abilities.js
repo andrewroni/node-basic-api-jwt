@@ -25,7 +25,7 @@ function defineAbilitiesFor(user) {
         // ------ view, edit, create, delete: false
         can(['create', 'read', 'update'], ['Contacts', 'Leads']);
         can(['read'], ['Calls']);
-        cannot('crud', ['core', 'statistic', 'settings', 'payments']);
+        cannot('crud', ['Core', 'Statistic', 'Settings', 'Payments']);
     } else if (user && user.role === 'seniormanager') {
         // seniormanager
         // -- module_name

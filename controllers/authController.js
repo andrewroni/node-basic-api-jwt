@@ -1,5 +1,5 @@
 const bcrypt = require('bcryptjs');
-const debug = require('debug')('controller:user*');
+const debug = require('debug')('auth:controller*');
 
 const {User} = require('../models/user');
 

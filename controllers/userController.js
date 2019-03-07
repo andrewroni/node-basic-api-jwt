@@ -1,12 +1,12 @@
+const mongoose = require('mongoose');
 const debug = require('debug')('user:controller*');
 
 const {User} = require('../models/user');
-const mongoose = require('mongoose');
 
 exports.getUsers = async (req, res, next) => {
     // v1 
     if (req.ability.can('read', 'User')) {
-        const users = await User.find({});
+        const users = await User.find({}, '_id username role').lean();
         return res.status(200).json({
                 success: true,
                 data: users
@@ -54,9 +54,7 @@ exports.getUser = async (req, res, next) => {
     }
     const user = await User.findById(id, '_id username').lean();
     if (!user) {
-        return next({
-            message: `User with id '${id}' was not found`
-        });
+        return next({message: `User with id '${id}' was not found`});
     }
     res.status(200).json({
         success: true,
@@ -75,9 +73,7 @@ exports.updateUser = async (req, res, next) => {
     }
     const user = await User.findByIdAndUpdate(id, req.body);
     if (!user) {
-        return next({
-            message: `User with id '${id}' was not found`
-        });
+        return next({message: `User with id '${id}' was not found`});
     }
     res.status(200).json({
         success: true,
