@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const auth = require('../routes/auth');
+const users = require('../routes/users');
 
 const corsOptions = {
 	origin: '*'
@@ -13,4 +14,5 @@ module.exports = app => {
     app.use(express.json(corsOptions));
 	app.use(cors());
     app.use(`/api/${apiroute}/auth`, auth);
+    app.use(`/api/${apiroute}/users`, users);
 };

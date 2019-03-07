@@ -14,7 +14,7 @@ module.exports = function () {
 	};
 
 	mongoose.plugin(accessibleRecordsPlugin);
-	// mongoose.plugin(permittedFieldsPlugin);
+
 	mongoose.Promise = global.Promise;
 	mongoose.connect(db, options)
 		.then(() => console.log(`MongoDB connected`));
