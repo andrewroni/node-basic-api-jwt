@@ -3,6 +3,7 @@ const cors = require('cors');
 
 const auth = require('../routes/auth');
 const users = require('../routes/users');
+const contacts = require('../routes/contacts');
 
 const corsOptions = {
 	origin: '*'
@@ -15,4 +16,5 @@ module.exports = app => {
 	app.use(cors());
     app.use(`/api/${apiroute}/auth`, auth);
     app.use(`/api/${apiroute}/users`, users);
+    app.use(`/api/${apiroute}/contacts`, contacts);
 };
