@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const config = require('config');
-const { accessibleRecordsPlugin, permittedFieldsPlugin } = require('@casl/mongoose');
+const { accessibleRecordsPlugin } = require('@casl/mongoose');
 
 
 module.exports = function () {

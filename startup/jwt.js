@@ -1,6 +1,5 @@
 const jwt = require('express-jwt');
 const config = require('config');
-const createAbilities = require('../helpers/abilities');
 
 module.exports =  app => {
 app.use(jwt({
@@ -13,5 +12,4 @@ app.use(jwt({
         return null;
     }
     }).unless({path: ['/api/v1/auth/login', '/api/v1/auth/signup']}));
-app.use(createAbilities);
 };

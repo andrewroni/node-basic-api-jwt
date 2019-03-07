@@ -5,12 +5,9 @@ const app = express();
 require('./startup/db')();
 require('./startup/parser')(app);
 require('./startup/jwt')(app);
+require('./startup/ability')(app);
 require('./startup/routes')(app);
-require('./startup/error')(app);
-
-// const errorHandler = require('./startup/error-handler');
-// app.use(errorHandler);
-
+require('./middleware/error')(app);
 
 const PORT = process.env.PORT || 3333;
 

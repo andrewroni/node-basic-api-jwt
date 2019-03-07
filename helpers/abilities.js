@@ -73,7 +73,7 @@ function defineAbilitiesFor(user) {
         // ------ view, edit, create, delete: true
         // ---- payments
         // ------ view, edit, create, delete: true
-        can(['crud'], ['Users','Contacts', 'Leads', 'Calls', 'Webforms', 'Statistic', 'Settings', 'Payments']);
+        can(['crud'], ['User','Contacts', 'Leads', 'Calls', 'Webforms', 'Statistic', 'Settings', 'Payments']);
         can(['read', 'update'], 'Core');
     } else if (user && user.role === 'marketing') {
         can('manage', 'all');
