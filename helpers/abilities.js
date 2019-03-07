@@ -3,12 +3,7 @@ const { AbilityBuilder, Ability } = require('@casl/ability')
 function defineAbilitiesFor(user) {
     const { rules, can, cannot } = AbilityBuilder.extract();
 
-    // permissions 
-
-
-
-
-
+    // permissions for 'null' user
     cannot(['crud'], 'all');
 
     if (user && user.role === 'manager') {
@@ -135,7 +130,7 @@ module.exports = function createAbilities(req, res, next) {
 // 		can(['read', 'update'], 'Calls', { _id: user.id });
 // 	}
 // 	return new Ability(rules);
-// };\]
+// };
 
 
 
