@@ -1,5 +1,5 @@
 {
     "jwtPrivateKey": "1234",
-    "db": "mongodb://localhost:27019/test_project",
+    "db": "mongodb://localhost:27017/test_project",
     "secret": "supersecret"
   }
