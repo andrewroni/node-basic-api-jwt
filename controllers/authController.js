@@ -19,6 +19,9 @@ exports.createUser = async (req, res, next) => {
 };
 
 exports.authUser = async (req, res, next) => {
+    debug('login');
+    console.log('login');
+    
     const { username, password, role } = req.body;
     const user = await User.findOne({username});
     if (!user) {

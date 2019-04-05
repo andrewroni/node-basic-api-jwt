@@ -4,7 +4,7 @@ function defineAbilitiesFor(user) {
     const { rules, can, cannot } = AbilityBuilder.extract();
 
     // permissions for 'null' user
-    cannot(['crud'], 'all');
+  //  cannot(['crud'], 'all');
 
     if (user && user.role === 'manager') {
         // manager
@@ -73,7 +73,7 @@ function defineAbilitiesFor(user) {
         // ------ view, edit, create, delete: true
         // ---- payments
         // ------ view, edit, create, delete: true
-        can(['crud'], ['User','Contacts', 'Leads', 'Calls', 'Webforms', 'Statistic', 'Settings', 'Payments']);
+        can('read', ['User','Contacts', 'Leads', 'Calls', 'Webforms', 'Statistic', 'Settings', 'Payments']);
         can(['read', 'update'], 'Core');
     } else if (user && user.role === 'marketing') {
         can('manage', 'all');
