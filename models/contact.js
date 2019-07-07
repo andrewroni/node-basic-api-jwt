@@ -10,7 +10,9 @@ const ContactsSchema = new Schema({
 	assigned: String,
 	createdBy: String
 }, {
-	timestamps: true
+	timestamps: true,
+	id: false,
+	versionKey: false
 });
 
-exports.Contacts = model('Contacts', ContactsSchema);
+exports.Contacts = model('Contact', ContactsSchema);
