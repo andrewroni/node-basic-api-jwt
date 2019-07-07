@@ -77,16 +77,6 @@ const rolesSchema = new mongoose.Schema({
 	collection: 'roles_new'
 });
 
-rolesSchema.pre('save', function(next) {
-	this._id = mongoose.Types.ObjectId().toHexString();
-	if (!this.permissions.length) {
-		this.permissions.push({
-			module_name : 'all'
-		});
-	}
-	next(); 
-});
-
 rolesSchema.statics.validateQuery = query => {
 	const schema = {
 		id:Joi.array(),

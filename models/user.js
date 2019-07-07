@@ -18,6 +18,9 @@ const UserSchema = new Schema({
 		type: String,
 		ref: 'Role'
 	}
+}, {
+	id: false,
+	versionKey: false
 });
 
 // UserSchema.plugin(accessibleRecordsPlugin);
