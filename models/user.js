@@ -2,10 +2,11 @@ const {Schema, model} = require('mongoose');
 const config = require('config');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const userValidation = require('../validation/user');
 
 // const { accessibleRecordsPlugin } = require('@casl/mongoose');
 
-const UserSchema = new Schema({
+const userSchema = new Schema({
 	username: {
 		type: String,
 		trim: true
@@ -23,13 +24,13 @@ const UserSchema = new Schema({
 	versionKey: false
 });
 
-// UserSchema.plugin(accessibleRecordsPlugin);
+userSchema.plugin(userValidation);
 
-UserSchema.methods.generateAuthToken = function () {
+userSchema.methods.generateAuthToken = function () {
 	return jwt.sign({_id: this._id.toHexString(), role: this.role}, config.get('jwtPrivateKey'));
 };
 
-UserSchema.pre('save', function (next) {
+userSchema.pre('save', function (next) {
 	if (this.isModified('password')) {
 		bcrypt.genSalt(10, (err, salt) => {
 			bcrypt.hash(this.password, salt, (err, hash) => {
@@ -46,4 +47,4 @@ UserSchema.pre('save', function (next) {
 	}
 });
 
-exports.User = model('User', UserSchema);
+exports.User = model('User', userSchema);
