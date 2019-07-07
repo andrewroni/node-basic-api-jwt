@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const {newUser} = require('../helpers/events');
 const debug = require('debug')('auth:controller*');
 
 const {User} = require('../models/user');
@@ -8,6 +9,7 @@ exports.createUser = async (req, res, next) => {
 	const user = new User({username, password, role});
 	await user.save();
 	debug('New user: ', user);
+	newUser();
 	res.status(200).json(
 		{
 			success: true,
